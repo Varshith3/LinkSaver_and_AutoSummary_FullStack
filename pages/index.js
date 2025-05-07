@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-
 export default function Home() {
-  const router = useRouter();
+  return null; 
+}
 
-  useEffect(() => {
-    router.push('/signup'); // Redirect to the Signup page
-  }, []);
-
-  return null; // Render nothing while redirecting
+export async function getServerSideProps(context) {
+  return {
+    redirect: {
+      destination: '/signup',
+      permanent: false, 
+    },
+  };
 }
