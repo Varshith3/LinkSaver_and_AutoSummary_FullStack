@@ -1,23 +1,12 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { supabase } from './Client';
 
 export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    const checkUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-
-      if (user) {
-        router.push('/dashboard');
-      } else {
-        router.push('/signup');
-      }
-    };
-
-    checkUser();
+    router.push('/signup'); // Redirect to the Signup page
   }, []);
 
-  return null;
+  return null; // Render nothing while redirecting
 }
